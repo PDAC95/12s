@@ -1,24 +1,23 @@
-import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import DashboardPage from "../pages/DashboardPage";
 import FeedPage from "../pages/FeedPage";
 
-// Mock authentication check
-const useAuth = () => {
-  return { isAuthenticated: false };
-};
-
-// Protected Route component
+// Protected Route using Auth0
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isLoading } = useAuth0();
+
+  if (isLoading) return <div>Loading...</div>;
   return isAuthenticated ? <>{children}</> : <Navigate to="/login" replace />;
 };
 
-// Public Route component
+// Public Route using Auth0
 const PublicRoute = ({ children }: { children: React.ReactNode }) => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isLoading } = useAuth0();
+
+  if (isLoading) return <div>Loading...</div>;
   return isAuthenticated ? (
     <Navigate to="/dashboard" replace />
   ) : (
@@ -64,6 +63,7 @@ const AppRouter = () => {
         />
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="*" element={<Navigate to="/login" replace />} />
+        <Route path="/callback" element={<div>Processing login...</div>} />
       </Routes>
     </BrowserRouter>
   );

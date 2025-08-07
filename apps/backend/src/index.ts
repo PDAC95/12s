@@ -6,6 +6,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import { appConfig } from "./config/app";
 import healthRouter from "./routes/healthRoutes";
+import protectedRouter from "./routes/protectedRoutes";
 
 // Load environment variables
 dotenv.config();
@@ -36,6 +37,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // API Routes
 app.use("/api", healthRouter);
+app.use("/api/protected", protectedRouter);
 
 // Basic root route
 app.get("/", (req, res) => {
@@ -53,4 +55,7 @@ app.listen(appConfig.port, () => {
   console.log(`📱 Environment: ${appConfig.nodeEnv}`);
   console.log(`🌐 Frontend URL: ${appConfig.frontendUrl}`);
   console.log(`💚 Health check: http://localhost:${appConfig.port}/api/health`);
+  console.log(
+    `🔒 Protected routes: http://localhost:${appConfig.port}/api/protected/*`
+  );
 });
