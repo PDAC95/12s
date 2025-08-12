@@ -4,6 +4,8 @@ import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import DashboardPage from "../pages/DashboardPage";
 import FeedPage from "../pages/FeedPage";
+import TestPage from "../pages/TestPage";
+import WelcomePage from "../pages/WelcomePage";
 
 // Protected Route using Auth0
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -61,8 +63,11 @@ const AppRouter = () => {
             </ProtectedRoute>
           }
         />
+        <Route path="/welcome" element={<WelcomePage />} />
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="*" element={<Navigate to="/login" replace />} />
+        <Route path="/test" element={<TestPage />} />
+
         <Route path="/callback" element={<div>Processing login...</div>} />
       </Routes>
     </BrowserRouter>

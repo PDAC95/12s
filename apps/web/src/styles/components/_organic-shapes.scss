@@ -1,0 +1,36 @@
+// ==========================================================================
+// ORGANIC SHAPES - SOISI PLATFORM
+// ==========================================================================
+
+.organic-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.organic-shape {
+  position: absolute;
+
+  &--top-right {
+    width: 280px;
+    height: 310px;
+    top: -100px;
+    right: -100px;
+    transform: rotate(15deg);
+    opacity: 0.9;
+  }
+
+  &--bottom-left {
+    width: 280px;
+    height: 310px;
+    bottom: -100px;
+    left: -100px;
+    transform: rotate(-20deg);
+    opacity: 0.9;
+  }
+}

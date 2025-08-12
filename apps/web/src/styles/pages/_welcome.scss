@@ -1,0 +1,72 @@
+// ==========================================================================
+// WELCOME PAGE - SOISI PLATFORM
+// ==========================================================================
+
+.welcome-page {
+  @extend .page-container;
+  background-color: $color-gray-50;
+}
+
+.welcome-header {
+  @extend .header;
+}
+
+.welcome-main {
+  flex: 1;
+  @include flex-center;
+  flex-direction: column;
+  padding: 0 $spacing-lg;
+  margin-bottom: $spacing-3xl;
+}
+
+.welcome-hero {
+  max-width: 20rem;
+  text-align: center;
+
+  &__title {
+    font-size: 2.25rem;
+    font-weight: $font-weight-bold;
+    color: $color-gray-900;
+    margin-bottom: $spacing-lg;
+    line-height: 1.1;
+
+    &-subtitle {
+      color: $color-gray-700;
+    }
+  }
+
+  &__description {
+    color: $color-gray-600;
+    font-size: 1.125rem;
+    margin-bottom: $spacing-3xl;
+  }
+}
+
+.welcome-footer {
+  padding: 0 $spacing-lg $spacing-3xl;
+
+  &__content {
+    max-width: 20rem;
+    margin: 0 auto;
+  }
+
+  &__social {
+    @include flex-center;
+    gap: $spacing-lg;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__signin {
+    text-align: center;
+    color: $color-gray-600;
+
+    a {
+      color: $color-gray-900;
+      font-weight: $font-weight-semibold;
+
+      &:hover {
+        color: $color-gray-700;
+      }
+    }
+  }
+}

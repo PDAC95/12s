@@ -1,0 +1,81 @@
+// ==========================================================================
+// MULTISTEP FORM - SOISI PLATFORM
+// ==========================================================================
+
+.multistep-form {
+  width: 100%;
+}
+
+.multistep-header {
+  margin-bottom: $spacing-2xl;
+  padding: 0 $spacing-lg;
+}
+
+.multistep-progress {
+  display: flex;
+  justify-content: center;
+  gap: $spacing-lg;
+  flex-wrap: wrap;
+
+  @media (max-width: 640px) {
+    gap: $spacing-sm;
+  }
+}
+
+.multistep-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xs;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+
+  &--active {
+    opacity: 1;
+  }
+
+  &--completed {
+    opacity: 0.8;
+
+    .multistep-step__number {
+      background-color: $color-primary;
+      color: $color-black;
+    }
+  }
+
+  &__number {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: $color-gray-300;
+    color: $color-gray-600;
+    @include flex-center;
+    font-size: 0.875rem;
+    font-weight: $font-weight-semibold;
+    transition: all 0.3s ease;
+
+    .multistep-step--active & {
+      background-color: $color-primary;
+      color: $color-black;
+      transform: scale(1.1);
+    }
+  }
+
+  &__title {
+    font-size: 0.75rem;
+    color: $color-gray-600;
+    text-align: center;
+    font-weight: $font-weight-medium;
+
+    .multistep-step--active & {
+      color: $color-gray-900;
+      font-weight: $font-weight-semibold;
+    }
+  }
+}
+
+.multistep-content {
+  min-height: 400px;
+  @include flex-center;
+  flex-direction: column;
+}

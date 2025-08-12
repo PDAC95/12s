@@ -1,0 +1,109 @@
+// ==========================================================================
+// HEXAGONS - SOISI PLATFORM
+// ==========================================================================
+
+.hexagon {
+  position: absolute;
+  @include hexagon-shape;
+  border-radius: 20px; // Esquinas más curvas
+}
+
+.hexagon--filled {
+  background-color: $color-primary;
+}
+
+.hexagon--outline {
+  background-color: transparent;
+  border: 2px solid rgba($color-gray-400, 0.3);
+}
+
+// Sizes
+.hexagon--small {
+  width: 3rem; // 48px
+  height: 3rem;
+}
+
+.hexagon--medium {
+  width: 5rem; // 80px
+  height: 5rem;
+}
+
+.hexagon--large {
+  width: 7rem; // 112px
+  height: 7rem;
+}
+
+.hexagon--xlarge {
+  width: 10rem; // 160px
+  height: 10rem;
+}
+
+// Background container
+.hexagon-background {
+  @include absolute-cover;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: $z-background;
+}
+
+// Ondas de hexágonos
+.hexagon-wave {
+  position: absolute;
+
+  &--top-right {
+    top: -2rem;
+    right: -2rem;
+
+    .hexagon:nth-child(1) {
+      top: 0;
+      right: 0;
+      transform: rotate(15deg);
+    }
+
+    .hexagon:nth-child(2) {
+      top: 2rem;
+      right: 3rem;
+      transform: rotate(-5deg);
+      opacity: 0.7;
+    }
+
+    .hexagon:nth-child(3) {
+      top: 4rem;
+      right: 5rem;
+      transform: rotate(25deg);
+      opacity: 0.4;
+    }
+  }
+
+  &--bottom-left {
+    bottom: -2rem;
+    left: -2rem;
+
+    .hexagon:nth-child(1) {
+      bottom: 0;
+      left: 0;
+      transform: rotate(-20deg);
+    }
+
+    .hexagon:nth-child(2) {
+      bottom: 2rem;
+      left: 3rem;
+      transform: rotate(10deg);
+      opacity: 0.6;
+    }
+
+    .hexagon:nth-child(3) {
+      bottom: 4rem;
+      left: 4rem;
+      transform: rotate(-15deg);
+      opacity: 0.3;
+    }
+  }
+}
+
+// Social icons fix
+.social-icon {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  object-fit: contain;
+}

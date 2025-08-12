@@ -1,0 +1,13 @@
+// ==========================================================================
+// HEADER - SOISI PLATFORM
+// ==========================================================================
+
+.header {
+  padding: $spacing-xl $spacing-lg $spacing-lg;
+  z-index: $z-header;
+
+  &__logo {
+    height: 2rem;
+    width: auto;
+  }
+}

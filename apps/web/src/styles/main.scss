@@ -1,0 +1,30 @@
+// ==========================================================================
+// MAIN STYLESHEET - SOISI PLATFORM
+// ==========================================================================
+
+// 1. ABSTRACTS
+@import "abstracts/variables";
+@import "abstracts/functions";
+@import "abstracts/mixins";
+
+// 2. BASE
+@import "base/reset";
+@import "base/typography";
+@import "base/base";
+
+// 3. LAYOUT
+@import "layout/containers";
+@import "layout/header";
+
+// 4. COMPONENTS
+@import "components/buttons";
+@import "components/forms";
+@import "components/hexagons";
+@import "components/organic-shapes";
+@import "components/multistep-form";
+@import "components/register-steps";
+
+// 5. PAGES
+@import "pages/welcome";
+@import "pages/login";
+@import "pages/register";
