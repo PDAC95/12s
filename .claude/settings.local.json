@@ -91,7 +91,16 @@
       "Bash(start http://localhost:3002/login)",
       "Bash(git commit:*)",
       "Bash(git remote add:*)",
-      "Bash(git pull:*)"
+      "Bash(git pull:*)",
+      "Bash(start http://localhost:3002/bets/create)",
+      "Bash(start http://localhost:3002/challenge/create)",
+      "Bash(find:*)",
+      "Bash(npx prisma:*)",
+      "Bash(start http://localhost:5555)",
+      "Bash(node check-users.js)",
+      "Bash(npx ts-node:*)",
+      "Bash(if exist dist rmdir /s /q dist)",
+      "Bash(del fix-user-coins.ts)"
     ],
     "deny": [],
     "ask": []
