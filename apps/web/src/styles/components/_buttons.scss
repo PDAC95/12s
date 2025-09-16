@@ -1,0 +1,85 @@
+// ==========================================================================
+// BUTTONS - SOISI PLATFORM
+// ==========================================================================
+
+.btn {
+  @include button-base;
+  padding: $spacing-md $spacing-lg;
+  border-radius: $radius-lg;
+  font-size: 1rem;
+  gap: $spacing-sm;
+
+  &:focus {
+    outline: 2px solid $color-blue;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Primary button (green)
+.btn--primary {
+  background-color: $color-primary;
+  color: $color-black;
+
+  &:hover:not(:disabled) {
+    background-color: $color-primary-dark;
+    transform: translateY(-1px);
+  }
+}
+
+// Secondary button (gray)
+.btn--secondary {
+  background-color: $color-gray-600;
+  color: $color-white;
+
+  &:hover:not(:disabled) {
+    background-color: $color-gray-700;
+  }
+}
+
+// Large button
+.btn--large {
+  padding: $spacing-lg $spacing-xl;
+  font-size: 1.125rem;
+  border-radius: $radius-full;
+}
+
+// Full width button
+.btn--full {
+  width: 100%;
+}
+
+// Social login buttons
+.btn--social {
+  min-width: 4rem;
+  min-height: 4rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  @include flex-center;
+
+  &:hover:not(:disabled) {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+  }
+
+  .social-icon {
+    width: 3rem !important;
+    height: 3rem !important;
+    object-fit: cover; // Para recortar el padding blanco
+    display: block;
+  }
+}
+
+// Get Started button specific
+.btn--get-started {
+  @extend .btn;
+  @extend .btn--primary;
+  @extend .btn--large;
+  @extend .btn--full;
+}

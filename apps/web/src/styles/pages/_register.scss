@@ -1,0 +1,123 @@
+// ==========================================================================
+// REGISTER PAGE - SOISI PLATFORM
+// ==========================================================================
+
+.register-page {
+  @extend .page-container;
+  background-color: $color-gray-50;
+}
+
+.register-header {
+  @extend .header;
+}
+
+.register-main {
+  flex: 1;
+  @include flex-center;
+  flex-direction: column;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-xl;
+}
+
+.register-form-container {
+  width: 100%;
+  max-width: 24rem; // 384px
+  text-align: center;
+}
+
+.register-hero {
+  margin-bottom: $spacing-xl;
+
+  &__title {
+    font-size: 2rem;
+    font-weight: $font-weight-bold;
+    color: $color-gray-900;
+    margin-bottom: $spacing-md;
+    line-height: 1.2;
+  }
+
+  &__description {
+    color: $color-gray-600;
+    font-size: 1rem;
+  }
+}
+
+.register-social {
+  @include flex-center;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-lg;
+}
+
+.register-divider {
+  position: relative;
+  margin: $spacing-xl 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: $color-gray-300;
+  }
+
+  span {
+    background-color: $color-gray-50;
+    color: $color-gray-500;
+    padding: 0 $spacing-md;
+    font-size: 0.875rem;
+  }
+}
+
+.register-form {
+  text-align: left;
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-md;
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+
+  .form-group {
+    margin-bottom: $spacing-lg;
+  }
+
+  .btn--get-started {
+    margin-top: $spacing-md;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.register-signin {
+  text-align: center;
+  color: $color-gray-600;
+  font-size: 0.875rem;
+
+  a {
+    color: $color-gray-900;
+    font-weight: $font-weight-semibold;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-gray-700;
+      text-decoration: underline;
+    }
+  }
+}
+
+// Responsive adjustments
+@include respond-to(sm) {
+  .register-form-container {
+    max-width: 28rem; // 448px
+  }
+
+  .register-hero__title {
+    font-size: 2.25rem;
+  }
+}

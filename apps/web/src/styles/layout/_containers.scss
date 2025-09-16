@@ -1,0 +1,30 @@
+// ==========================================================================
+// CONTAINERS - SOISI PLATFORM
+// ==========================================================================
+
+.container {
+  width: 100%;
+  max-width: 28rem; // 448px - mobile first
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+
+  @include respond-to(md) {
+    max-width: 32rem; // 512px
+  }
+
+  @include respond-to(lg) {
+    max-width: 36rem; // 576px
+  }
+}
+
+.page-container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-layer {
+  position: relative;
+  z-index: $z-content;
+}
