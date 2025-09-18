@@ -30,6 +30,28 @@ Errors that don't block development but need fixing
 
 ### Active Non-Critical Errors:
 
+- [x] [2025-09-18 18:30] React Hydration mismatch in ChallengeCard time display
+  - **File:** src/components/feed/ChallengeCard.tsx:156
+  - **Error:** "Hydration failed because the server rendered text didn't match the client"
+  - **Context:** Time remaining display showing different values on server vs client (e.g., "22h 59m" vs "22h 53m")
+  - **Stack:**
+    ```
+    at span (<anonymous>:null:null)
+    at ChallengeCard (src/components/feed/ChallengeCard.tsx:156:17)
+    at MixedFeedContainer (src/components/feed/MixedFeedContainer.tsx:202:17)
+    at FeedPage (src/app/(protected)/feed/page.tsx:51:7)
+    ```
+  - **Attempted:**
+    1. Identified formatTimeRemaining() function using Date.now() causing different calculations on server vs client
+    2. Moved time calculation to client-side using useEffect
+  - **Status:** RESOLVED
+  - **Solution:**
+    1. Added useState for timeRemaining with initial "Loading..." state
+    2. Created useEffect that runs only on client-side to calculate time
+    3. Added interval to update time every minute
+    4. Replaced direct formatTimeRemaining() call with timeRemaining state
+    5. Hydration mismatch eliminated by ensuring server renders stable content
+
 - [x] [2025-09-16 20:30] Missing UI components causing build errors
 
   - **File:** web/src/app/(protected)/my-bets/page.tsx:8 & web/src/app/(protected)/bets-pool/page.tsx

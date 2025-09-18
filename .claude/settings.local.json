@@ -100,7 +100,10 @@
       "Bash(node check-users.js)",
       "Bash(npx ts-node:*)",
       "Bash(if exist dist rmdir /s /q dist)",
-      "Bash(del fix-user-coins.ts)"
+      "Bash(del fix-user-coins.ts)",
+      "Bash(git show:*)",
+      "Bash(git stash:*)",
+      "Bash(start http://localhost:3000/challenge-feed)"
     ],
     "deny": [],
     "ask": []
