@@ -103,7 +103,9 @@
       "Bash(del fix-user-coins.ts)",
       "Bash(git show:*)",
       "Bash(git stash:*)",
-      "Bash(start http://localhost:3000/challenge-feed)"
+      "Bash(start http://localhost:3000/challenge-feed)",
+      "Bash(start http://localhost:3005/api)",
+      "Bash(start http://localhost:3003)"
     ],
     "deny": [],
     "ask": []

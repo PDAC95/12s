@@ -24,11 +24,21 @@
 - [x] [2025-09-16 14:00] [P0] Add authentication middleware for protected routes
 - [x] [2025-09-16 14:00] [P0] Create logout functionality with token invalidation
 
-### 🎨 P2 - UI Polish Tasks (For Monday)
+### 🎨 P1 - UI & Backend Tasks (For Tomorrow - Sept 19)
 
-- [ ] [P2] Adjust icon colors for sports and videogames in post-challenge page
+- [ ] [P1] Connect challenge cards Take button to actual bet acceptance backend endpoint
+- [ ] [P1] Implement real API integration for MixedFeedContainer to show user's actual challenges/victories
+- [ ] [P1] Create challenge creation backend endpoints for 3 challenge types (direct, friends, public)
+- [ ] [P1] Add real-time challenge expiration handling in backend
+- [ ] [P1] Implement challenge status updates (PENDING → ACCEPTED → COMPLETED)
+
+### 🎨 P2 - UI Polish Tasks (For Later)
+
+- [x] [2025-09-18 18:00] [P2] Optimize ChallengeCard interaction design and layout
+- [x] [2025-09-18 18:00] [P2] Fix visibility icons for public and friends challenge types
+- [x] [2025-09-18 18:00] [P2] Ensure consistent play icon across VictoryCard and ChallengeCard
 - [ ] [P2] Create individual challenge creation forms for each type
-- [ ] [P2] Implement actual challenge submission to backend
+- [ ] [P2] Add loading states and better error handling to challenge interactions
 
 ### 🟡 P1 - Important Tasks (Do Second)
 
