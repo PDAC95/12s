@@ -431,23 +431,37 @@ After completing each task:
 
 ### 🎯 CURRENT FOCUS
 
-**Immediate Priority: Create Dashboard Page**
+**CURRENT PRIORITY: Implementar US-001 - Sistema Avatares Confiables**
 
-The user successfully registers and logs in but gets 404 on `/dashboard`. Need to create this page with:
+✅ **SISTEMA FUNCIONANDO CORRECTAMENTE** - Backend compila sin errores y está operativo.
 
-- User welcome message
-- Coin balance (0 for now)
-- Logout functionality
-- Basic navigation
+**Situación Actual (2025-09-26):**
+- Epic Friends & Rating System 100% completado y funcional ✅
+- Backend: 0 errores TypeScript, corriendo en puerto 3005 ✅
+- Frontend: Corriendo en puerto 3001, 19 páginas funcionales ✅
+- Database: 10 usuarios de prueba con billeteras configuradas ✅
+- Red social: Sistema completo de amigos operativo ✅
 
-**Remember:**
+**Único Issue Identificado:**
+- Avatares rotos en sección Friends por problemas SSL con api.dicebear.com
+- Solución: Migrar a Pravatar (más confiable)
 
-- Frontend runs on port 3002 (3000 in use)
-- Backend runs on port 3001
-- Use existing auth.service.ts
-- Follow existing design patterns from login/register pages
-- All pages use hexagon backgrounds and green (#B5FD1E) accent color
-- Scrollbar-hide class implemented for clean scrolling
+**Estado de Puertos Actualizados:**
+- Frontend runs on port 3001 ✅ (corregido)
+- Backend runs on port 3005 ✅ (operativo)
+- Prisma Studio on port 5555 ✅
+- PostgreSQL database operational ✅
+
+**User Story Lista para Lunes:**
+- US-001: Sistema Avatares Confiables (3 story points, P1)
+- Migrar HexagonAvatar de DiceBear a Pravatar
+- Implementar función getUserAvatarNumber() consistente
+- Testing completo en 4 secciones de Friends
+
+**NEXT SESSION START COMMAND:**
+```
+Implementar US-001: Migrar avatares de DiceBear a Pravatar siguiendo el plan técnico documentado en PLANNING.md y TASKS.md
+```
 
 ---
 
@@ -469,6 +483,262 @@ The user successfully registers and logs in but gets 404 on `/dashboard`. Need t
 - No console errors
 - Clean git status after commit
 - Feature works as intended
+
+---
+
+## 🤖 MODEL CONTEXT PROTOCOL (MCP) SERVIDORES
+
+### MCPs Instalados y Configurados
+
+Los siguientes MCPs están configurados para potencializar el desarrollo de Soisi:
+
+#### 1. **Context 7 MCP**
+- **Propósito**: Documentación actualizada automática para bibliotecas
+- **Paquete**: `@upstash/context7-mcp@latest`
+- **Beneficio**: Obtiene documentación en tiempo real para Next.js 15, NestJS 11, Prisma, Auth0
+- **Uso**: Escribe `use context7` en prompts para documentación actual
+
+#### 2. **Playwright MCP**
+- **Propósito**: Automatización de pruebas E2E del frontend
+- **Paquete**: `@executeautomation/playwright-mcp-server`
+- **Beneficio**: Testing automatizado de flujos de usuario, autenticación Auth0, formularios
+- **Scripts configurados**: `npm run test:e2e`, `npm run test:e2e:ui`, `npm run playwright:install`
+
+#### 3. **Database Management MCP**
+- **Propósito**: Gestión directa de PostgreSQL/Prisma
+- **Paquete**: `mcp-server-git`
+- **Beneficio**: Consultas SQL optimizadas, análisis de migraciones, debugging de schema
+- **Scripts configurados**: `npm run db:migrate`, `npm run db:studio`, `npm run db:reset`
+
+#### 4. **API Testing MCP**
+- **Propósito**: Testing de endpoints del backend NestJS
+- **Paquete**: `dkmaker-mcp-rest-api`
+- **Beneficio**: Testing automatizado de APIs REST, validación de respuestas, debugging
+- **Variable requerida**: `REST_BASE_URL=http://localhost:3001`
+- **Scripts configurados**: `npm run test:api`
+
+#### 5. **Git Advanced MCP**
+- **Propósito**: Automatización avanzada de Git workflows
+- **Paquete**: `@cyanheads/git-mcp-server`
+- **Beneficio**: Commits inteligentes, branching automático, merging, análisis de cambios
+- **Funciones**: Manejo de ramas, tags, resolución de conflictos, historial inteligente
+
+#### 6. **Puppeteer MCP**
+- **Propósito**: Browser automation para testing y scraping
+- **Paquete**: `puppeteer-mcp-server`
+- **Beneficio**: Screenshots automatizados, interacción con navegador, JavaScript execution
+- **Uso**: Testing visual, scraping de datos, automatización de formularios web
+
+#### 7. **Browser Automation MCP** (Playwright moderno)
+- **Propósito**: Automatización moderna de navegadores
+- **Paquete**: `@executeautomation/mcp-playwright`
+- **Beneficio**: Cross-browser support (Chrome, Firefox, WebKit), APIs modernas
+- **Ventajas**: Más estable que Puppeteer, mejor para testing cross-browser
+
+#### 8. **Chrome DevTools MCP** 🆕
+- **Propósito**: Debugging en tiempo real de aplicaciones web
+- **Paquete**: `chrome-devtools-mcp`
+- **Beneficio**: Integración directa con Chrome DevTools Protocol
+- **Características**:
+  - Monitoreo de requests de red en tiempo real
+  - Tracking de errores de consola
+  - Análisis de métricas de performance
+  - Inspección de objetos JavaScript
+  - Gestión de storage y cookies
+- **Ideal para**: Debugging de Soisi frontend/backend en desarrollo
+
+### Configuración MCP
+
+#### Archivo de configuración principal: `.mcp.json`
+```json
+{
+  "servers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"],
+      "description": "Context7 MCP server for up-to-date documentation and code examples"
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@executeautomation/playwright-mcp-server"],
+      "description": "Playwright MCP server for browser automation and E2E testing"
+    },
+    "database": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-git"],
+      "description": "Database management MCP server for PostgreSQL/Prisma operations"
+    },
+    "api-testing": {
+      "command": "npx",
+      "args": ["-y", "dkmaker-mcp-rest-api"],
+      "description": "REST API testing MCP server for backend endpoint validation"
+    },
+    "git-advanced": {
+      "command": "npx",
+      "args": ["-y", "@cyanheads/git-mcp-server"],
+      "description": "Advanced Git automation MCP server for repository management"
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "puppeteer-mcp-server"],
+      "description": "Alternative Puppeteer MCP server for browser automation and web scraping"
+    },
+    "browser-automation": {
+      "command": "npx",
+      "args": ["-y", "@executeautomation/mcp-playwright"],
+      "description": "Modern browser automation using Playwright with cross-browser support"
+    },
+    "chrome-devtools": {
+      "command": "chrome-devtools-mcp",
+      "description": "Chrome DevTools MCP server for real-time web debugging, network monitoring, and performance analysis"
+    }
+  }
+}
+```
+
+#### Claude Code configuración: `.claude/settings.local.json`
+- ✅ `enableAllProjectMcpServers: true` - Auto-aprueba todos los MCPs del proyecto
+- ✅ Permisos añadidos para todos los paquetes MCP
+- ✅ Permisos para scripts de testing y automatización
+
+### Scripts Añadidos
+
+#### Frontend (web/package.json)
+```json
+{
+  "test": "jest",
+  "test:watch": "jest --watch",
+  "test:coverage": "jest --coverage",
+  "test:e2e": "playwright test",
+  "test:e2e:ui": "playwright test --ui",
+  "test:e2e:debug": "playwright test --debug",
+  "playwright:install": "playwright install",
+  "playwright:codegen": "playwright codegen"
+}
+```
+
+#### Backend (backend/package.json)
+```json
+{
+  "test:api": "jest --testMatch=\"**/*.api.spec.ts\"",
+  "test:integration": "jest --testMatch=\"**/*.integration.spec.ts\"",
+  "db:migrate": "npx prisma migrate dev",
+  "db:generate": "npx prisma generate",
+  "db:push": "npx prisma db push",
+  "db:reset": "npx prisma migrate reset --force",
+  "db:studio": "npx prisma studio",
+  "db:seed": "ts-node prisma/seed.ts"
+}
+```
+
+#### Root (package.json)
+```json
+{
+  "test:web": "cd web && npm run test",
+  "test:backend": "cd backend && npm run test",
+  "test:all": "npm run test:backend && npm run test:web",
+  "test:e2e": "cd web && npm run test:e2e",
+  "test:api": "cd backend && npm run test:api",
+  "dev:web": "cd web && npm run dev",
+  "dev:backend": "cd backend && npm run start:dev",
+  "build:web": "cd web && npm run build",
+  "build:backend": "cd backend && npm run build",
+  "lint:web": "cd web && npm run lint",
+  "lint:backend": "cd backend && npm run lint",
+  "lint:all": "npm run lint:backend && npm run lint:web",
+  "db:migrate": "cd backend && npm run db:migrate",
+  "db:studio": "cd backend && npm run db:studio"
+}
+```
+
+### Casos de Uso Específicos para Soisi
+
+#### 1. **Testing de Autenticación con Auth0**
+```typescript
+// Usar Playwright MCP para testing E2E de Auth0
+// Automatizar: register → email verification → login → dashboard
+```
+
+#### 2. **Validación de APIs del Backend**
+```typescript
+// Usar API Testing MCP para validar endpoints:
+// POST /auth/register, POST /auth/login, GET /users/profile
+// Verificar respuestas consistentes y manejo de errores
+```
+
+#### 3. **Testing del Sistema de Apuestas**
+```typescript
+// Playwright para flujos completos:
+// Crear apuesta → Subir evidencia → Validación por jurado
+// Cross-browser testing en Chrome, Firefox, Safari
+```
+
+#### 4. **Optimización de Database Queries**
+```typescript
+// Database MCP para:
+// Analizar queries lentas de Prisma
+// Optimizar índices para el sistema de rating
+// Debugging de relaciones User ↔ Bet ↔ Evidence
+```
+
+#### 5. **Git Workflows Automatizados**
+```typescript
+// Git Advanced MCP para:
+// Commits automáticos por feature
+// Branching estratégico (feature/bet-system)
+// Merge automático con validaciones
+```
+
+#### 6. **Debugging en Tiempo Real con Chrome DevTools**
+```typescript
+// Chrome DevTools MCP para debugging de Soisi:
+// Monitoreo de API calls a backend (3001)
+// Debugging de autenticación Auth0/JWT
+// Análisis de performance en carga de feed
+// Tracking de errores JavaScript en betting system
+// Inspección de WebSocket connections (futuro)
+// Análisis de storage de tokens y user data
+```
+
+### Variables de Entorno Requeridas
+
+Añadir al `.env` correspondiente:
+
+```bash
+# Para API Testing MCP
+REST_BASE_URL=http://localhost:3001
+
+# Para Context7 (opcional, mejores rate limits)
+CONTEXT7_API_KEY=your_api_key_from_context7.com
+```
+
+### Comandos de Verificación
+
+```bash
+# Verificar MCPs funcionando
+npx @upstash/context7-mcp@latest --help
+npx @executeautomation/playwright-mcp-server --help
+npx @cyanheads/git-mcp-server --help
+npx dkmaker-mcp-rest-api --help  # Requiere REST_BASE_URL
+npx puppeteer-mcp-server --help
+
+# Testing rápido
+npm run test:all          # Todos los tests
+npm run test:e2e         # E2E del frontend
+npm run test:api         # APIs del backend
+npm run lint:all         # Linting completo
+```
+
+### Beneficios Directos para Soisi
+
+1. **Desarrollo más rápido**: Context7 proporciona documentación actualizada de Next.js 15, NestJS 11
+2. **Testing automatizado**: Playwright cubre flujos críticos de Auth0 y sistema de apuestas
+3. **APIs robustas**: Testing automático de endpoints del backend con validación de respuestas
+4. **Base de datos optimizada**: Análisis y optimización de queries de Prisma
+5. **Git inteligente**: Automatización de workflows de desarrollo y deployment
+6. **Cross-browser**: Testing en múltiples navegadores para mejor UX
+
+Los MCPs están listos para usar. Claude Code los cargará automáticamente cuando sean necesarios.
 
 ---
 

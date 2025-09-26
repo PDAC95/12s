@@ -7,7 +7,21 @@
     "packages/*"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:web": "cd web && npm run test",
+    "test:backend": "cd backend && npm run test",
+    "test:all": "npm run test:backend && npm run test:web",
+    "test:e2e": "cd web && npm run test:e2e",
+    "test:api": "cd backend && npm run test:api",
+    "dev:web": "cd web && npm run dev",
+    "dev:backend": "cd backend && npm run start:dev",
+    "build:web": "cd web && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "lint:web": "cd web && npm run lint",
+    "lint:backend": "cd backend && npm run lint",
+    "lint:all": "npm run lint:backend && npm run lint:web",
+    "db:migrate": "cd backend && npm run db:migrate",
+    "db:studio": "cd backend && npm run db:studio"
   },
   "repository": {
     "type": "git",

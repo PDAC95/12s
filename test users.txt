@@ -1,0 +1,12 @@
+| Username      | Email                | Coins |
+  |---------------|----------------------|-------|
+  | gamerking     | gamer@test.com       | 862   |
+  | challenger    | challenger@test.com  | 634   |
+  | competitive   | competitive@test.com | 962   |
+  | casual_player | casual@test.com      | 811   |
+  | pro_gamer     | pro@test.com         | 793   |
+  | testuser      | test@example.com     | 733   |
+  | betuser       | bettest@test.com     | 513   |
+  | admin         | admin@test.com       | 525   |
+  | testcoin      | test@test.com        | 780   |
+  | freshuser     | fresh@test.com       | 992   |

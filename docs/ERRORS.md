@@ -30,6 +30,30 @@ Errors that don't block development but need fixing
 
 ### Active Non-Critical Errors:
 
+- [ ] [2025-09-26 16:30] **Avatares rotos en sección Friends** - DiceBear API SSL/Certificate issues
+  - **File:** web/src/components/ui/HexagonAvatar.tsx:54, web/src/app/(protected)/friends/page.tsx:193,248,296,345
+  - **Error:** Images broken/not loading from `https://api.dicebear.com/7.x/avataaars/svg?seed=${username}`
+  - **Context:** Users viewing Friends section (all 4 tabs: Friends list, Search, Received, Sent) see broken avatar images
+  - **Root Cause:** SSL/Certificate connectivity issues with DiceBear API
+  - **Evidence:**
+    ```bash
+    curl: (35) schannel: next InitializeSecurityContext failed: CRYPT_E_NO_REVOCATION_CHECK (0x80092012)
+    - The revocation function was unable to check revocation for the certificate.
+    ```
+  - **Impact:** Poor UX in social network functionality, users cannot visually identify other players
+  - **Attempted:**
+    1. Verified Next.js remotePatterns configuration includes `api.dicebear.com` ✅
+    2. Tested DiceBear API with WebFetch - API works correctly ✅
+    3. Confirmed HexagonAvatar component structure is correct ✅
+    4. Identified local environment SSL/Certificate validation issues ✅
+  - **Status:** IDENTIFIED - User Story US-001 created for resolution
+  - **Solution Planned:**
+    1. Migrate from DiceBear (`api.dicebear.com`) to Pravatar (`i.pravatar.cc`)
+    2. Implement consistent username→avatar number mapping function
+    3. Add robust fallback mechanism for offline scenarios
+    4. Comprehensive testing across all Friends sections
+  - **Sprint:** Monday 2025-09-30 (3 story points, P1 priority)
+
 - [x] [2025-09-18 18:30] React Hydration mismatch in ChallengeCard time display
   - **File:** src/components/feed/ChallengeCard.tsx:156
   - **Error:** "Hydration failed because the server rendered text didn't match the client"

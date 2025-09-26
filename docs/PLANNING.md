@@ -609,9 +609,65 @@ Coverage targets:
 
 ---
 
+## RECENT TECHNICAL DECISIONS
+
+### Avatar System Migration (September 26, 2025)
+
+**Decision:** Migrate from DiceBear API to Pravatar for user avatars
+
+**Context:**
+- DiceBear API (`api.dicebear.com`) experiencing SSL/Certificate connectivity issues
+- Users seeing broken avatar images in Friends section (all 4 tabs)
+- Error: `CRYPT_E_NO_REVOCATION_CHECK (0x80092012)` in local environment
+
+**Technical Solution:**
+```typescript
+// Old implementation (problematic)
+src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${username}`}
+
+// New implementation (reliable)
+src={`https://i.pravatar.cc/150?img=${getUserAvatarNumber(username)}`}
+
+// Consistent mapping function
+function getUserAvatarNumber(username: string): number {
+  let hash = 0;
+  for (let i = 0; i < username.length; i++) {
+    hash = ((hash << 5) - hash + username.charCodeAt(i)) & 0xffffffff;
+  }
+  return Math.abs(hash % 99) + 1;
+}
+```
+
+**Components Affected:**
+- `web/src/components/ui/HexagonAvatar.tsx` (main avatar component)
+- `web/src/app/(protected)/friends/page.tsx` (4 avatar usage locations)
+- `web/src/utils/avatar.ts` (new utility file)
+
+**Configuration Updates:**
+- Next.js `remotePatterns` already includes `i.pravatar.cc`
+- No additional external dependencies required
+
+**Fallback Strategy:**
+1. Primary: Pravatar service (`i.pravatar.cc`)
+2. Secondary: Local initials-based avatar generation
+3. Tertiary: Default avatar placeholder
+
+**Implementation Timeline:**
+- User Story: US-001 (3 story points, P1 priority)
+- Target Sprint: Monday 2025-09-30
+- Estimated Duration: 4-6 hours
+
+**Benefits:**
+- More reliable external service (Pravatar vs DiceBear)
+- Consistent avatar assignment per username
+- Better offline fallback support
+- Improved UX in social network features
+
+---
+
 **Document Status:**
 
 - Created: September 9, 2025
-- Last Updated: September 16, 2025
-- Version: 1.1 (JWT Authentication Update)
+- Last Updated: September 26, 2025
+- Version: 1.2 (Avatar System Migration + System Analysis Update)
 - Maintained by: Engineering Team

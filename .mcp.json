@@ -1,0 +1,53 @@
+{
+  "servers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"],
+      "description": "Context7 MCP server for up-to-date documentation and code examples"
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@executeautomation/playwright-mcp-server"],
+      "description": "Playwright MCP server for browser automation and E2E testing"
+    },
+    "git": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-git"],
+      "description": "Git MCP server for repository management"
+    },
+    "api-testing": {
+      "command": "npx",
+      "args": ["-y", "@dkmaker/mcp-rest-api"],
+      "description": "REST API testing MCP server for backend endpoint validation"
+    },
+    "git-advanced": {
+      "command": "npx",
+      "args": ["-y", "@cyanheads/git-mcp-server"],
+      "description": "Advanced Git automation MCP server for repository management"
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+      "description": "Puppeteer MCP server for browser automation and web scraping"
+    },
+    "chrome-devtools": {
+      "command": "chrome-devtools-mcp",
+      "description": "Chrome DevTools MCP server for real-time web debugging, network monitoring, and performance analysis"
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem"],
+      "description": "MCP server for filesystem access - useful for schema file management"
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "description": "MCP server for sequential thinking and problem solving - perfect for complex migrations"
+    },
+    "browser-automation": {
+      "command": "npx",
+      "args": ["-y", "@agent-infra/mcp-server-browser"],
+      "description": "MCP server for browser access - useful for testing frontend after backend changes"
+    }
+  }
+}

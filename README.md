@@ -1,115 +1,260 @@
-﻿# 12s (Soisi Platform)
+# Soisi - P2P Betting Platform
 
-A social-gaming platform that allows users to create profiles, share gaming victories via social posts, and engage in peer-to-peer challenges with rewards.
+## 🎯 Project Overview
 
-## Tech Stack
+Soisi is a peer-to-peer betting platform for video games using virtual coins with community-driven validation. Built as a social network where gamers can challenge friends, create bets, and build reputation through fair play.
 
-### Backend
-- Node.js with TypeScript
-- Express.js
-- Prisma ORM
-- PostgreSQL
-- Auth0 Authentication
-
-### Frontend Web
-- React with TypeScript
-- Vite
-- TailwindCSS
-- React Router
-- Redux Toolkit
-
-### Frontend Mobile
-- React Native with TypeScript
-- React Navigation
-- Redux Toolkit
-
-### Infrastructure
-- Monorepo with Nx/Lerna
-- GitHub for version control
-- Husky for git hooks
-- ESLint + Prettier for code quality
-- Conventional commits
-
-## Project Structure
-12s/
-├── apps/
-│   ├── backend/          # Express.js API server
-│   ├── web/              # React web application
-│   └── mobile/           # React Native mobile app
-├── packages/
-│   ├── shared/           # Shared utilities and types
-│   └── ui-components/    # Reusable UI components
-├── .husky/               # Git hooks configuration
-├── package.json          # Root dependencies and scripts
-└── README.md            # This file
-
-## Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js (v18 or higher)
-- npm or yarn
+
+- Node.js 20 LTS
+- PostgreSQL 15+
 - Git
-- PostgreSQL (for database)
 
-### Installation
+### Installation & Setup
 
-1. Clone the repository:
-`ash
-git clone https://github.com/PDAC95/12s.git
-cd 12s
+```bash
+# Clone repository
+git clone https://github.com/your-org/soisi.git
+cd soisi
 
-Install dependencies:
+# Backend setup
+cd backend
+npm install
+npx prisma generate
+npx prisma migrate dev
 
-bashnpm install
+# Frontend setup
+cd ../web
+npm install
 
-Install dependencies for each app:
+# Environment setup (copy and configure)
+cp backend/.env.example backend/.env
+cp web/.env.local.example web/.env.local
+```
 
-bash# Backend dependencies
-cd apps/backend && npm install && cd ../..
+### Development Commands
 
-# Web app dependencies  
-cd apps/web && npm install && cd ../..
+```bash
+# Start all services (run in separate terminals)
 
-# Mobile app dependencies
-cd apps/mobile && npm install && cd ../..
-Development Workflow
-Branch Strategy (GitFlow)
+# Terminal 1: Database Studio
+cd backend && npx prisma studio
+# → Opens on http://localhost:5555
 
-master: Production-ready code
-develop: Integration branch for features
-feature/SOI-XXX-description: Feature development
-release/vX.X.X: Release preparation
-hotfix/vX.X.X-description: Production hotfixes
+# Terminal 2: Backend API
+cd backend && npm run start:dev
+# → Runs on http://localhost:3005
 
-Commit Guidelines
-This project uses conventional commits. Format: type(scope): description
-Types:
+# Terminal 3: Frontend
+cd web && npm run dev
+# → Runs on http://localhost:3001
+```
 
-feat: New features
-fix: Bug fixes
-docs: Documentation changes
-style: Code style changes
-refactor: Code refactoring
-test: Test additions/modifications
-chore: Build process or auxiliary tool changes
+### Verification
 
-Code Quality
+```bash
+# Test backend
+curl http://localhost:3005
 
-Pre-commit hooks automatically run ESLint and Prettier
-Commit messages are validated against conventional format
-All code must pass linting before commit
+# Test frontend
+open http://localhost:3001
 
-Available Scripts
-bashnpm run prepare          # Initialize Husky git hooks
-Contributing
+# Test database
+open http://localhost:5555
+```
 
-Create feature branch from develop: git checkout -b feature/SOI-XXX-description
-Make changes following code standards
-Commit using conventional format
-Push and create Pull Request to develop branch
+## 📁 Project Structure
 
-Project Status
-Current Sprint: Sprint 1 - Technical Setup
-Phase: Repository configuration and monorepo structure
+```
+soisi/
+├── backend/                 # NestJS API Server
+│   ├── src/
+│   │   ├── auth/           # JWT Authentication
+│   │   ├── users/          # User management
+│   │   ├── bets/           # Betting system
+│   │   ├── friends/        # Social network
+│   │   └── modules/        # Additional modules
+│   ├── prisma/
+│   │   ├── schema.prisma   # Database schema
+│   │   └── migrations/     # DB migrations
+│   └── package.json
+│
+├── web/                    # Next.js Frontend
+│   ├── src/
+│   │   ├── app/           # App Router pages
+│   │   │   ├── (public)/  # Public routes
+│   │   │   └── (protected)/ # Protected routes
+│   │   ├── components/    # Reusable components
+│   │   ├── services/      # API services
+│   │   └── utils/         # Utilities
+│   └── package.json
+│
+└── docs/                  # Project Documentation
+    ├── PROGRESS.md        # Development progress
+    ├── TASKS.md           # Task management
+    ├── PLANNING.md        # Technical architecture
+    └── ERRORS.md          # Error documentation
+```
 
-For questions or support, contact the development team.
+## 🛠️ Technology Stack
+
+### Backend
+- **Framework:** NestJS 10
+- **Database:** PostgreSQL + Prisma ORM
+- **Authentication:** JWT with httpOnly cookies
+- **Language:** TypeScript
+
+### Frontend
+- **Framework:** Next.js 14 (App Router)
+- **UI Library:** Tailwind CSS + shadcn/ui
+- **State:** Zustand + React Query
+- **Language:** TypeScript
+
+## 🗄️ Database
+
+### Current Users (Test Data)
+- 10 test users with virtual wallets
+- Users: `gamerking`, `challenger`, `competitive`, etc.
+- Each user has coins, reputation, and social connections
+
+### Key Models
+- **User**: Authentication and profile
+- **Wallet**: Virtual coin management
+- **Bet**: P2P betting system
+- **Friendship**: Social network relationships
+- **Evidence**: Bet validation system
+
+## 🔑 Environment Variables
+
+### Backend (.env)
+```bash
+DATABASE_URL="postgresql://user:password@localhost:5432/soisi"
+JWT_SECRET="your-jwt-secret"
+PORT=3005
+```
+
+### Frontend (.env.local)
+```bash
+NEXT_PUBLIC_API_URL="http://localhost:3005"
+```
+
+## 📋 Available Features
+
+### ✅ Implemented
+- User registration & JWT authentication
+- Social network (friends, search, requests)
+- Betting system foundation
+- Virtual wallet management
+- User reputation system
+- Protected routes & middleware
+
+### 🚧 In Progress
+- US-001: Avatar system migration (DiceBear → Pravatar)
+
+### 📋 Planned
+- Evidence upload for bets
+- Jury validation system
+- Tournament framework
+
+## 🧪 Testing
+
+### Test the System
+```bash
+# 1. Register new user
+curl -X POST http://localhost:3005/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"username":"testuser","email":"test@test.com","password":"password123","birthDate":"1990-01-01"}'
+
+# 2. Login
+curl -X POST http://localhost:3005/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"test@test.com","password":"password123"}'
+
+# 3. View users
+curl http://localhost:3005/debug/users
+```
+
+### Frontend Testing
+1. Open http://localhost:3001
+2. Register → Login → Navigate to Friends
+3. Test: search users, send friend requests
+4. Test: create bets, view feed
+
+## 🎮 System Status
+
+**Current State (2025-09-26):**
+- ✅ Backend: 0 TypeScript errors, fully operational
+- ✅ Frontend: 19 pages functional, responsive design
+- ✅ Database: 10 test users, relationships working
+- ✅ Authentication: JWT system complete
+- ✅ Social Network: Friends system operational
+- ⚠️ Known issue: Avatar images broken (fix scheduled)
+
+## 📊 Metrics
+
+- **Backend Controllers:** 6 (Auth, Users, Bets, Friends, Debug, App)
+- **Frontend Pages:** 19 (Login, Register, Feed, Friends, Bets, etc.)
+- **Database Tables:** 8 main models with relationships
+- **API Endpoints:** 20+ RESTful endpoints
+- **Test Users:** 10 with virtual wallets
+
+## 🐛 Known Issues
+
+1. **Avatar Images Broken** (Priority: P1)
+   - Cause: SSL/Certificate issues with DiceBear API
+   - Fix: Migrate to Pravatar (US-001 scheduled)
+   - Files affected: `HexagonAvatar.tsx`, `friends/page.tsx`
+
+## 🔄 Development Workflow
+
+### Daily Workflow
+1. Pull latest changes
+2. Start services (Database → Backend → Frontend)
+3. Check Prisma Studio for data verification
+4. Test endpoints with curl
+5. Frontend testing in browser
+
+### Code Standards
+- TypeScript strict mode
+- Consistent API response format
+- JWT authentication required
+- Form validation with zod
+- Responsive design required
+
+## 🚀 Deployment
+
+### Ports Configuration
+- **Frontend:** 3001 (Next.js)
+- **Backend:** 3005 (NestJS)
+- **Database Studio:** 5555 (Prisma)
+- **PostgreSQL:** 5432 (Database)
+
+### Production Checklist
+- [ ] Environment variables configured
+- [ ] Database migrations applied
+- [ ] JWT secrets generated
+- [ ] CORS configured for production
+- [ ] SSL certificates installed
+
+## 📞 Support
+
+### Documentation
+- **Progress:** `docs/PROGRESS.md`
+- **Tasks:** `docs/TASKS.md`
+- **Architecture:** `docs/PLANNING.md`
+- **Errors:** `docs/ERRORS.md`
+
+### Getting Help
+1. Check documentation in `/docs`
+2. Review error logs in ERRORS.md
+3. Verify service status (ports 3001, 3005, 5555)
+4. Check database connection via Prisma Studio
+
+---
+
+**Last Updated:** September 26, 2025
+**Version:** 1.0 (Social Network MVP)
+**Status:** Development - Ready for Avatar Migration
+**Next Sprint:** US-001 Avatar System Migration
